@@ -19,10 +19,20 @@ all: clean
 clean:
 	@echo $(LOG_PREFIX)"Clear all build objs"
 	@echo $(LOG_PREFIX)$(OBJS) $(APP)
+	@rm -rf $(OBJS)
 
 $(APP): $(OBJS)
-	$(CC) $(DEBUG_FLAG) $(OBJS) -o $(APP)
+	$(CC) $(OBJS) -o $(APP)
+
+html_parser.o: html_parser.c html_parser.h Makefile
+	$(CC) $(DEBUG_FLAG) -c html_parser.c -o $@
+
+html_ast.o: html_parser.o html_ast.c Makefile
+	$(CC) $(DEBUG_FLAGS) -c html_ast.c -o $@
+
+build: $(APP)
+	@echo done
 
 run: $(APP)
-	./$< --f=1
+	./$< --stop=1
 
