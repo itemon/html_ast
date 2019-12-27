@@ -12,10 +12,17 @@ SRC := $(wildcard *.c)
 OBJS := $(strip $(patsubst %.c, %.o, $(SRC)))
 SRC := $(filter-out $(ENTRY), $(SRC))
 
-.PHONY: clean all
+.PHONY: clean all run
 
 all: clean
 
 clean:
 	@echo $(LOG_PREFIX)"Clear all build objs"
 	@echo $(LOG_PREFIX)$(OBJS) $(APP)
+
+$(APP): $(OBJS)
+	$(CC) $(DEBUG_FLAG) $(OBJS) -o $(APP)
+
+run: $(APP)
+	./$< --f=1
+
