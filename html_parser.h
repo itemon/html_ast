@@ -2,6 +2,8 @@
 
 #define LIB_HTML_PARSER 1
 
-void parse(char* html);
+#include <stdio.h>
+
+void parse_from_file(FILE* html);
 
 #endif

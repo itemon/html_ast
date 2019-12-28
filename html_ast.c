@@ -5,10 +5,9 @@
 int main(int argc, char** argv) {
   printf("Start parsing the html as AST\n");
 
-	FILE* html_file_handler = fopen("./demo.html", "r");
-	size_t html_ptr_size = sizeof(html_file_handler);
-	parse("hello world ---- ");
-	printf("handler size %lu\n", html_ptr_size);
+	FILE* html_file_handler = fopen("./testdata/vue.common.dev.js", "r");
+	parse_from_file(html_file_handler);
 	fclose(html_file_handler);
+
   return EXIT_SUCCESS;
 }
