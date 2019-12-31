@@ -12,6 +12,9 @@ SRC := $(wildcard *.c)
 OBJS := $(strip $(patsubst %.c, %.o, $(SRC)))
 SRC := $(filter-out $(ENTRY), $(SRC))
 
+LINK_DIR := linkedlist
+LINK_LIST_SRC := $(wildcard $(LINK_DIR)/*.c $(LINK_DIR)/*.h)
+
 .PHONY: clean all run
 
 all: clean
@@ -19,6 +22,7 @@ all: clean
 clean:
 	@echo $(LOG_PREFIX)"Clear all build objs"
 	@echo $(LOG_PREFIX)$(OBJS) $(APP)
+	@echo Link list $(LINK_LIST_SRC)
 	@rm -rf $(OBJS)
 
 $(APP): $(OBJS)

@@ -5,9 +5,9 @@
 
 struct LNode {
   char* type;
-  LNode* next;
-}
+  struct LNode* next;
+};
 
-typedef LNode L_Node;
+typedef struct LNode L_Node;
 
 #endif
