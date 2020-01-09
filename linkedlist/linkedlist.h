@@ -16,4 +16,8 @@ struct LNode {
 
 typedef struct LNode L_Node;
 
+L_Node* append_lnode(L_Node* prev, L_Node* born);
+
+void test_lnode();
+
 #endif
